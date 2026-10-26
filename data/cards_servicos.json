@@ -1,0 +1,167 @@
+[
+  {
+    "id": "upa_24h", "char": "marta", "type": "pedido", "weight": 9, "min_month": 6,
+    "text": "A UPA 24h acabaria com a fila do posto, mas exige médicos e plantões todo mês, enquanto ela existir.",
+    "learn": "despesa_obrigatoria",
+    "boost": [{"when": [{"meter": "servicos", "lt": 45}], "mult": 1.6}],
+    "left": {
+      "label": "Abrir a UPA 24h",
+      "effects": {"servicos": 18, "cofre": -8, "povo": 6},
+      "flags_set": ["upa_24h"], "rel": {"marta": 1},
+      "outcome": "A fila some e o povo aplaude. Só que os plantões chegam todo mês: despesa permanente pesa mais que a obra."
+    },
+    "right": {
+      "label": "Reformar o posto",
+      "effects": {"servicos": 7, "cofre": -5, "povo": 2},
+      "outcome": "O posto melhora, mas segue com horário comercial. Custa menos e resolve menos."
+    }
+  },
+  {
+    "id": "escola_integral", "char": "davi", "type": "pedido", "weight": 9, "min_month": 8,
+    "text": "Prof. Davi propõe escola em tempo integral: mais merenda, mais professores e mais custo fixo todo mês.",
+    "learn": "minimos_constitucionais",
+    "left": {
+      "label": "Tempo integral",
+      "effects": {"servicos": 16, "cofre": -9, "povo": 5},
+      "flags_set": ["escola_integral"], "rel": {"davi": 1},
+      "outcome": "Os alunos ficam o dia todo e as famílias respiram. Salários e merenda viram gasto fixo, mês após mês."
+    },
+    "right": {
+      "label": "Reformar as salas",
+      "effects": {"servicos": 6, "cofre": -4, "povo": 1},
+      "outcome": "Salas novas e quadra coberta. É mais barato, mas o dia de aula segue curto."
+    }
+  },
+  {
+    "id": "promessa_campanha", "char": "tadeu", "type": "politica", "weight": 8,
+    "req": [{"meter": "servicos", "gte": 58}],
+    "text": "Na campanha você prometeu creche, ônibus e posto novo no primeiro ano. A cidade cobra tudo de uma vez.",
+    "learn": "lrf",
+    "boost": [{"when": [{"meter": "servicos", "gte": 66}], "mult": 3}],
+    "left": {
+      "label": "Cumprir todas",
+      "effects": {"servicos": 16, "cofre": -13, "povo": 7},
+      "flags_set": ["promessas_cumpridas"],
+      "outcome": "Tudo inaugurado e festa na praça. Mas folha e contratos agora são para sempre, e a receita não cresceu junto."
+    },
+    "right": {
+      "label": "Priorizar uma",
+      "effects": {"servicos": 6, "cofre": -4, "povo": -3},
+      "outcome": "Só a creche sai do papel. Escolher dói, mas é assim que as contas fecham."
+    }
+  },
+  {
+    "id": "onibus_escolar", "char": "davi", "type": "pedido", "weight": 7, "min_month": 4,
+    "text": "Alunos da zona rural faltam porque não há ônibus. O Estado oferece convênio, mas só paga parte do custo.",
+    "learn": "convenios",
+    "left": {
+      "label": "Aceitar o convênio",
+      "effects": {"servicos": 9, "cofre": -3, "integridade": 2},
+      "outcome": "Os ônibus passam a rodar. O convênio ajuda, mas tem prazo e exige prestação de contas de cada real."
+    },
+    "right": {
+      "label": "Frota própria",
+      "effects": {"servicos": 10, "cofre": -10, "povo": 3},
+      "outcome": "Frota nova, sem depender de ninguém. Compra, manutenção e motoristas saem do seu caixa."
+    }
+  },
+  {
+    "id": "lixo_acumulado", "char": "lucia", "type": "crise", "weight": 10,
+    "req": [{"meter": "servicos", "lt": 46}],
+    "text": "O lixo está acumulado há semanas e o cheiro chegou à praça. Dona Lúcia traz fotos de cada rua.",
+    "learn": "funcao_social",
+    "left": {
+      "label": "Mutirão de emergência",
+      "effects": {"servicos": 12, "cofre": -7, "povo": 4},
+      "outcome": "Em uma semana as ruas ficam limpas. Emergência resolve o hoje, mas não o contrato que falhou."
+    },
+    "right": {
+      "label": "Esperar o contrato",
+      "effects": {"servicos": -6, "cofre": 2, "povo": -7},
+      "rel": {"lucia": -1},
+      "outcome": "A licitação do novo contrato demora. A cidade paga com o próprio cheiro."
+    }
+  },
+  {
+    "id": "corte_geral", "char": "cleide", "type": "politica", "weight": 9,
+    "req": [{"meter": "cofre", "lt": 38}],
+    "text": "Para fechar o ano, a Fazenda sugere cortar 10% de tudo, inclusive posto e escola.",
+    "learn": "equilibrio_fiscal",
+    "boost": [{"when": [{"meter": "cofre", "lt": 28}], "mult": 2}],
+    "left": {
+      "label": "Corte geral de 10%",
+      "effects": {"cofre": 12, "servicos": -12, "povo": -4},
+      "outcome": "As contas fecham, mas o corte cai sobre quem mais depende do serviço. Cortar sem escolher é a saída mais fácil."
+    },
+    "right": {
+      "label": "Cortar cargos e festas",
+      "effects": {"cofre": 7, "povo": -3, "integridade": 3},
+      "outcome": "Corta comissionados e eventos. Rende menos, protege posto e escola, e custa apoio político."
+    }
+  },
+  {
+    "id": "greve_professores", "char": "davi", "type": "crise", "weight": 8, "min_month": 10,
+    "req": [{"meter": "cofre", "lt": 46}],
+    "text": "Professores avisam que param em 30 dias se o reajuste continuar atrasado. Prof. Davi pede uma solução.",
+    "learn": "lrf",
+    "left": {
+      "label": "Conceder o reajuste",
+      "effects": {"servicos": 5, "povo": 5, "cofre": -10},
+      "flags_set": ["reajuste_folha"], "rel": {"davi": 1},
+      "outcome": "Greve evitada. O reajuste vale para sempre, e o limite de gasto com pessoal vai apertando."
+    },
+    "right": {
+      "label": "Parcelar em 12 meses",
+      "effects": {"servicos": -9, "povo": -4, "cofre": -2},
+      "outcome": "O caixa aguenta, mas as aulas são interrompidas por dias. O custo escondido é a aprendizagem perdida."
+    }
+  },
+  {
+    "id": "fila_exames", "char": "marta", "type": "crise", "weight": 10,
+    "req": [{"meter": "servicos", "lt": 38}],
+    "text": "A fila de exames passa de três meses e os médicos pedem socorro. Faltam máquinas e especialistas.",
+    "learn": "minimos_constitucionais",
+    "left": {
+      "label": "Comprar de clínicas",
+      "effects": {"servicos": 10, "cofre": -9, "povo": 3},
+      "outcome": "A fila encolhe rápido. Comprar serviço de terceiros resolve agora, mas custa mais que fortalecer a rede própria."
+    },
+    "right": {
+      "label": "Mutirão da rede",
+      "effects": {"servicos": 6, "cofre": -3, "povo": -2},
+      "outcome": "A equipe própria faz hora extra e a fila anda mais devagar. Gasta menos e fortalece o posto."
+    }
+  },
+  {
+    "id": "repasse_extra", "char": "cleide", "type": "evento", "weight": 8, "min_month": 10,
+    "req": [{"meter": "cofre", "gte": 42}],
+    "text": "Chegou um repasse extra do Estado e o caixa engordou além do previsto. O que fazer com a sobra?",
+    "learn": "transferencias",
+    "left": {
+      "label": "Guardar a sobra",
+      "effects": {"cofre": 18, "povo": -3},
+      "outcome": "O caixa fica robusto, mas dinheiro parado não atende ninguém. Reserva é prudência; sobra eterna é omissão."
+    },
+    "right": {
+      "label": "Obras previstas na LOA",
+      "effects": {"cofre": 4, "servicos": 9, "povo": 3},
+      "outcome": "A sobra vira obra que já estava no orçamento. Receita extra rende mais em investimento do que em gasto fixo."
+    }
+  },
+  {
+    "id": "venda_terreno", "char": "tadeu", "type": "politica", "weight": 7, "min_month": 12,
+    "req": [{"meter": "cofre", "lt": 62}],
+    "text": "Há um terreno público sem uso. Vendê-lo daria caixa já, mas é dinheiro de uma vez só.",
+    "learn": "lrf",
+    "left": {
+      "label": "Vender o terreno",
+      "effects": {"cofre": 16, "povo": -3},
+      "outcome": "O caixa respira. Mas venda de patrimônio é receita única e, pela LRF, não deve pagar despesa corrente, como a folha."
+    },
+    "right": {
+      "label": "Conceder o uso",
+      "effects": {"cofre": 6, "integridade": 3, "povo": 1},
+      "outcome": "O terreno fica da cidade e rende aluguel. Menos dinheiro agora, mas receita que se repete."
+    }
+  }
+]

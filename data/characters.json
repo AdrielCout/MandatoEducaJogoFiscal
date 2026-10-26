@@ -1,0 +1,13 @@
+{
+  "tadeu":  {"name": "Tadeu",          "role": "Chefe de gabinete",          "skin": "#c68642", "hair": "#2b1b17", "hair_style": "short", "shirt": "#2e5e8c", "acc": "tie",        "bg": "#cfe3f1"},
+  "cleide": {"name": "Cleide Fontes",  "role": "Secretária da Fazenda",      "skin": "#8d5524", "hair": "#1a1a1a", "hair_style": "bun",   "shirt": "#6b3e75", "acc": "glasses",    "bg": "#e8d7ee"},
+  "zeza":   {"name": "Dona Zeza",      "role": "Dona do mercadinho",         "skin": "#e0ac69", "hair": "#b8b8b8", "hair_style": "bun",   "shirt": "#d9534f", "acc": "apron",      "bg": "#f6d9d4"},
+  "jonas":  {"name": "Jonas",          "role": "Estudante e influenciador",  "skin": "#a1665e", "hair": "#111111", "hair_style": "curly", "shirt": "#2a9d8f", "acc": "headphones", "bg": "#d2eeea"},
+  "vitor":  {"name": "Vitor Lacerda",  "role": "Empreiteiro",                "skin": "#f1c27d", "hair": "#4a3728", "hair_style": "short", "shirt": "#e9a23b", "acc": "hardhat",    "bg": "#f8e8c8"},
+  "ivo":    {"name": "Seu Ivo",        "role": "Dono do Hotel Vista Mar",    "skin": "#d9a066", "hair": "#cfcfcf", "hair_style": "short", "shirt": "#3b3b4f", "acc": "mustache",   "bg": "#dcdce8"},
+  "marta":  {"name": "Dra. Marta",     "role": "Secretária de Saúde",        "skin": "#7b4b2a", "hair": "#1a1a1a", "hair_style": "long",  "shirt": "#f2f2f2", "acc": "coat",       "bg": "#d9efe4"},
+  "davi":   {"name": "Prof. Davi",     "role": "Diretor de escola",          "skin": "#e6b98a", "hair": "#5b4636", "hair_style": "short", "shirt": "#8a6d3b", "acc": "book",       "bg": "#efe6d2"},
+  "bianca": {"name": "Bianca Reis",    "role": "Auditora da Controladoria",  "skin": "#f1c27d", "hair": "#3d2a20", "hair_style": "long",  "shirt": "#34495e", "acc": "badge",      "bg": "#d6dde4"},
+  "lucia":  {"name": "Dona Lúcia",     "role": "Associação de moradores",    "skin": "#b57a50", "hair": "#6e6e6e", "hair_style": "short", "shirt": "#e07a5f", "acc": "scarf",      "bg": "#f6dfd5"},
+  "jornal": {"name": "Jornal da Cidade","role": "Notícia",                   "kind": "icon", "icon": "news", "bg": "#ece6d6"}
+}

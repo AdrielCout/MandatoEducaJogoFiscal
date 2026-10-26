@@ -1,0 +1,62 @@
+{
+  "title": "MANDATO",
+  "subtitle": "Contas da Cidade",
+  "city": "Novaluz",
+  "mandate_months": 48,
+  "months_per_card": 2,
+  "intro_card": "intro",
+  "fatal_low": 0,
+  "fatal_high": 100,
+  "danger_low": 20,
+  "danger_high": 80,
+  "start_noise": 3,
+
+  "meters": {
+    "povo":        {"name": "Povo",          "sub": "confiança e participação",  "start": 50, "icon": "people"},
+    "servicos":    {"name": "Serviços",      "sub": "saúde, escola, ruas",       "start": 50, "icon": "cross"},
+    "cofre":       {"name": "Cofre",         "sub": "caixa da prefeitura",       "start": 55, "icon": "coin"},
+    "integridade": {"name": "Transparência", "sub": "controle e contas abertas", "start": 50, "icon": "eye"}
+  },
+
+  "mayors": [
+    {"name": "Helena Brito",    "t": "prefeita"},
+    {"name": "Rodrigo Lima",    "t": "prefeito"},
+    {"name": "Iara Mendes",     "t": "prefeita"},
+    {"name": "Caio Albuquerque","t": "prefeito"},
+    {"name": "Sônia Farias",    "t": "prefeita"},
+    {"name": "Tiago Moura",     "t": "prefeito"}
+  ],
+
+  "recurring": [
+    {"label": "Receitas regulares: IPTU, ISS e repasses (FPM, ICMS)",    "effects": {"cofre": 2}},
+    {"label": "Folha de pagamento e contas fixas",                    "effects": {"cofre": -2}},
+    {"label": "Desgaste natural: postos, escolas e ruas pedem manutenção", "effects": {"servicos": -1}},
+    {"label": "Povo confiante paga em dia: a arrecadação sobe",       "when": [{"meter": "povo", "gte": 60}], "effects": {"cofre": 1}},
+    {"label": "Povo desconfiado: inadimplência e sonegação crescem",  "when": [{"meter": "povo", "lte": 35}], "effects": {"cofre": -2}},
+    {"label": "Sem portal da transparência, poucos enxergam os gastos","when": [{"no_flag": "portal_publicado"}], "effects": {"integridade": -1}},
+    {"label": "Mais notas fiscais: mais ICMS e ISS chegam à cidade",   "when": [{"flag": "cultura_nota"}], "effects": {"cofre": 2}},
+    {"label": "Informalidade em alta: menos imposto recolhido",        "when": [{"flag": "informalidade_alta"}], "effects": {"cofre": -1}},
+    {"label": "Cobrança da dívida ativa em andamento",                 "when": [{"flag": "divida_ativa"}], "effects": {"cofre": 1}},
+    {"label": "Cadastro de imóveis atualizado: IPTU mais justo",       "when": [{"flag": "cadastro_atualizado"}], "effects": {"cofre": 1}},
+    {"label": "Reajuste da folha: gasto permanente",                   "when": [{"flag": "reajuste_folha"}], "effects": {"cofre": -1}},
+    {"label": "Isenção de IPTU ao hotel (e empregos que ele gera)",    "when": [{"flag": "isencao_hotel"}], "effects": {"cofre": -1, "povo": 1}},
+    {"label": "Dívida com fornecedores gera juros",                    "when": [{"flag": "fornecedores_atrasados"}], "effects": {"cofre": -1}},
+    {"label": "UPA 24h: plantões e equipe custam todo mês, mas mantêm o serviço", "when": [{"flag": "upa_24h"}], "effects": {"cofre": -2, "servicos": 1}},
+    {"label": "Escola em tempo integral: professores e merenda são gasto fixo", "when": [{"flag": "escola_integral"}], "effects": {"cofre": -2, "servicos": 1}},
+    {"label": "Promessas cumpridas viraram folha e contratos permanentes", "when": [{"flag": "promessas_cumpridas"}], "effects": {"cofre": -2}},
+    {"label": "Serviços muito grandes custam caro de manter",          "when": [{"meter": "servicos", "gte": 70}], "effects": {"cofre": -2}},
+    {"label": "Cofre vazio: falta dinheiro para manter os serviços",   "when": [{"meter": "cofre", "lte": 20}], "effects": {"servicos": -2}},
+    {"label": "Cofre cheio e parado: o povo estranha",                 "when": [{"meter": "cofre", "gte": 80}], "effects": {"povo": -2}},
+    {"label": "Povo satisfeito demais: ninguém confere as contas",     "when": [{"meter": "povo", "gte": 80}], "effects": {"integridade": -1}},
+    {"label": "Controle em excesso: obras e compras travadas",         "when": [{"meter": "integridade", "gte": 80}], "effects": {"servicos": -1, "povo": -1}}
+  ],
+
+  "start_mods": [
+    {"when": [{"inherit": "cofre_baixo"}],        "effects": {"cofre": -10}},
+    {"when": [{"inherit": "operacao"}],           "effects": {"povo": -10, "integridade": -6}},
+    {"when": [{"inherit": "povo_baixo"}],         "effects": {"povo": -9}},
+    {"when": [{"inherit": "integridade_baixo"}],  "effects": {"integridade": -8}},
+    {"when": [{"inherit": "servicos_baixo"}],     "effects": {"servicos": -8}},
+    {"when": [{"inherit": "mandato_exemplar"}],   "effects": {"povo": 6}}
+  ]
+}

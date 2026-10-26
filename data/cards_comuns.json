@@ -1,0 +1,252 @@
+[
+  {
+    "id": "intro", "char": "tadeu", "type": "especial", "weight": 0, "months": 0, "tutorial": true,
+    "text": "Bom dia, {t}! Sou Tadeu, seu chefe de gabinete. {cidade} se sustenta em quatro forças: Povo, Serviços, Cofre e Transparência. Nenhuma pode zerar ou lotar.",
+    "learn": "tributo",
+    "left":  {"label": "Entendido", "effects": {"servicos": 2}, "months": 0,
+              "outcome": "Regra de ouro: os DOIS extremos derrubam um mandato. Dinheiro de menos quebra a cidade; dinheiro parado de mais também."},
+    "right": {"label": "Vamos governar", "effects": {"povo": 2}, "months": 0,
+              "outcome": "Regra de ouro: os DOIS extremos derrubam um mandato. Dinheiro de menos quebra a cidade; dinheiro parado de mais também."}
+  },
+
+  {
+    "id": "iptu_atraso", "char": "cleide", "type": "politica", "weight": 10,
+    "text": "A inadimplência do IPTU chegou a 30%. Posso inscrever os devedores na dívida ativa e protestar em cartório. Ou fazemos uma anistia.",
+    "left":  {"label": "Cobrar com rigor", "effects": {"cofre": 13, "povo": -9}, "flags_set": ["divida_ativa"], "rel": {"cleide": 1}, "learn": "divida_ativa",
+              "outcome": "A arrecadação sobe e o protesto assusta: muita gente corre para pagar. Mas há reclamação na porta da prefeitura."},
+    "right": {"label": "Anistia e parcelamento", "effects": {"povo": 9, "cofre": 3, "integridade": -4}, "learn": "anistia_parcelamento",
+              "outcome": "Quem devia agradece. Quem sempre pagou em dia pergunta: \"e eu, que fiz tudo certo?\""}
+  },
+  {
+    "id": "iptu_cadastro", "char": "cleide", "type": "politica", "weight": 9, "req": [{"month": true, "gte": 6}],
+    "text": "O cadastro de imóveis está velho: mansão paga IPTU de casinha, e muita casinha paga demais. Atualizar vai mexer no bolso de muita gente.",
+    "learn": "iptu",
+    "left":  {"label": "Atualizar o cadastro", "effects": {"cofre": 15, "povo": -12, "integridade": 4}, "flags_set": ["cadastro_atualizado"],
+              "outcome": "A cobrança fica mais justa, mas os donos de imóveis valiosos gritam e a oposição aproveita."},
+    "right": {"label": "Deixar como está", "effects": {"povo": 4, "cofre": -5},
+              "outcome": "Ninguém reclama hoje. Mas quem tem imóvel valioso segue pagando pouco e o caixa perde receita."}
+  },
+  {
+    "id": "saude_posto", "char": "marta", "type": "pedido", "weight": 10,
+    "text": "O posto do Alto está sem médico e sem remédio. O município deve aplicar ao menos 15% da receita de impostos em saúde.",
+    "learn": "minimos_constitucionais",
+    "boost": [{"when": [{"meter": "servicos", "lt": 40}], "mult": 2.5}],
+    "left":  {"label": "Reforçar a saúde", "effects": {"servicos": 14, "cofre": -12, "povo": 5}, "rel": {"marta": 1},
+              "outcome": "O posto reabre com médico. O caixa sente o golpe, mas a fila diminui."},
+    "right": {"label": "Esperar a receita", "effects": {"cofre": 4, "servicos": -10, "povo": -7}, "rel": {"marta": -1},
+              "outcome": "A fila cresce. A promessa fica para depois, e a lei também cobra o mínimo."}
+  },
+  {
+    "id": "escola_flores", "char": "davi", "type": "pedido", "weight": 10,
+    "text": "A escola do bairro Flores tem goteira e falta merenda. Davi pergunta: \"O dinheiro dos impostos não era pra isso?\"",
+    "learn": "funcao_social",
+    "left":  {"label": "Investir na escola", "effects": {"servicos": 12, "cofre": -10, "povo": 5}, "rel": {"davi": 1},
+              "outcome": "A merenda volta e o telhado é consertado. A escola vira exemplo de que o imposto retorna."},
+    "right": {"label": "Adiar a reforma", "effects": {"cofre": 5, "povo": -6, "servicos": -7},
+              "outcome": "O caixa respira, mas os pais cobram e o rendimento dos alunos cai."}
+  },
+  {
+    "id": "publicidade", "char": "tadeu", "type": "politica", "weight": 8,
+    "text": "Tadeu sugere a campanha \"Novaluz Avança\", com seu rosto em outdoors e vídeos. Custa caro, mas \"o povo precisa ver o que fazemos\".",
+    "left":  {"label": "Aprovar a campanha", "effects": {"povo": 10, "cofre": -12, "integridade": -6}, "learn": "publicidade_oficial",
+              "outcome": "A aprovação sobe, até o Ministério Público notar: publicidade oficial não pode promover autoridades."},
+    "right": {"label": "Só informar serviços", "effects": {"cofre": -3, "povo": 3, "integridade": 3}, "learn": "publicidade_oficial",
+              "outcome": "Campanha informativa, sem rosto e sem slogan pessoal. Menos glamour, mais legalidade."}
+  },
+  {
+    "id": "show_aniversario", "char": "tadeu", "type": "politica", "weight": 9,
+    "text": "Aniversário da cidade! O show nacional custa o equivalente a duas ambulâncias novas. A praça lotada seria um sucesso.",
+    "learn": "custo_oportunidade",
+    "left":  {"label": "Contratar o show", "effects": {"povo": 14, "cofre": -12, "servicos": -3},
+              "outcome": "Noite histórica! Na manhã seguinte, a pergunta: e as ambulâncias?"},
+    "right": {"label": "Festa local + ambulâncias", "effects": {"povo": -2, "servicos": 7, "cofre": -3},
+              "outcome": "Festa simples e duas ambulâncias novas. Menos aplausos, mais atendimentos."}
+  },
+  {
+    "id": "reajuste", "char": "cleide", "type": "politica", "weight": 9, "req": [{"month": true, "gte": 8}],
+    "text": "O sindicato pede reajuste geral da folha. Cleide avisa: reajuste vale todo mês, para sempre.",
+    "left":  {"label": "Conceder o reajuste", "effects": {"povo": 9, "servicos": 4, "cofre": -11}, "flags_set": ["reajuste_folha"], "learn": "lrf",
+              "outcome": "Servidores felizes. Mas a folha ficou mais pesada e o caixa vai sentir todos os meses."},
+    "right": {"label": "Negar o reajuste", "effects": {"povo": -9, "cofre": 3, "servicos": -3}, "learn": "despesa_obrigatoria",
+              "outcome": "O caixa agradece e o sindicato ameaça greve. Folha é despesa obrigatória: pesa, mas não se corta à vontade."}
+  },
+  {
+    "id": "fpm_baixo", "char": "cleide", "type": "evento", "weight": 7, "req": [{"month": true, "gte": 6}],
+    "text": "O repasse do FPM veio abaixo do esperado. Boa parte do nosso caixa vem de fora: de impostos que outro governo arrecada.",
+    "learn": "transferencias",
+    "boost": [{"when": [{"meter": "cofre", "lt": 40}], "mult": 2.5}],
+    "left":  {"label": "Cortar despesas", "effects": {"cofre": 9, "servicos": -8, "povo": -3},
+              "outcome": "As contas fecham, mas serviços sentem a tesourada."},
+    "right": {"label": "Reforçar arrecadação própria", "effects": {"cofre": 7, "povo": -6},
+              "outcome": "Fiscalização mais firme e cobrança mais ativa. Menos dependência, mais atrito."}
+  },
+  {
+    "id": "avenida_melhoria", "char": "tadeu", "type": "politica", "weight": 8, "req": [{"month": true, "gte": 10}],
+    "text": "A reforma da Avenida Mar vai valorizar os imóveis ao redor. Dá para cobrar contribuição de melhoria dos donos beneficiados.",
+    "learn": "tributos_tipos",
+    "left":  {"label": "Cobrar dos beneficiados", "effects": {"cofre": 10, "povo": -8, "servicos": 5},
+              "outcome": "Quem lucra com a valorização paga parte da obra. Há gritaria, mas a conta fica mais justa."},
+    "right": {"label": "Pagar do caixa geral", "effects": {"cofre": -12, "povo": 6, "servicos": 7},
+              "outcome": "Todo mundo paga a obra, inclusive quem nunca passa pela avenida. Popular, mas caro."}
+  },
+  {
+    "id": "taxa_lixo", "char": "cleide", "type": "politica", "weight": 8,
+    "text": "A coleta de lixo dá prejuízo. Podemos criar uma taxa de coleta domiciliar ou cobrir tudo com o caixa geral.",
+    "learn": "taxa",
+    "left":  {"label": "Criar a taxa", "effects": {"cofre": 9, "povo": -8, "servicos": 5},
+              "outcome": "O serviço passa a se pagar. A taxa é possível porque o serviço é específico e divisível."},
+    "right": {"label": "Pagar pelo caixa geral", "effects": {"cofre": -7, "povo": 3, "servicos": 5},
+              "outcome": "Ninguém paga a mais, mas o dinheiro sai de outra coisa: saúde, escola ou obra."}
+  },
+  {
+    "id": "cidadao_imposto", "char": "jonas", "type": "evento", "weight": 9,
+    "text": "Jonas posta: \"Eu nem trabalho, não pago imposto, né?\" O vídeo já tem 40 mil visualizações e todo mundo espera sua resposta.",
+    "learn": "tributo_no_preco",
+    "left":  {"label": "Explicar com dados", "effects": {"integridade": 6, "povo": 3, "cofre": -2}, "rel": {"jonas": 1},
+              "outcome": "Você mostra a nota: o imposto já vem no preço do lanche e do tênis. Muita gente se surpreende."},
+    "right": {"label": "Responder com meme", "effects": {"povo": 9, "integridade": -2},
+              "outcome": "Viraliza! Mas pouca gente aprende que imposto está no preço de tudo."}
+  },
+  {
+    "id": "emenda_quadra", "char": "tadeu", "type": "politica", "weight": 8, "req": [{"month": true, "gte": 8}],
+    "text": "Um deputado oferece verba de emenda para uma quadra poliesportiva. A prefeitura teria de pagar a contrapartida e manter depois.",
+    "learn": "convenios",
+    "left":  {"label": "Aceitar a emenda", "effects": {"servicos": 10, "povo": 6, "cofre": -9},
+              "outcome": "A quadra sai do papel. Agora é preciso pagar a contrapartida e cuidar dela por anos."},
+    "right": {"label": "Recusar", "effects": {"cofre": 3, "povo": -5, "servicos": -2},
+              "outcome": "Você evita um compromisso futuro, mas perde uma obra que a população queria."}
+  },
+  {
+    "id": "dengue", "char": "marta", "type": "crise", "weight": 10, "req": [{"meter": "servicos", "lt": 42}],
+    "boost": [{"when": [{"meter": "servicos", "lt": 30}], "mult": 3}],
+    "text": "Surto de dengue. Postos lotados e falta de insumos. Dra. Marta pede verba extra e um mutirão de combate ao mosquito.",
+    "learn": "funcao_social",
+    "left":  {"label": "Mutirão e verba extra", "effects": {"servicos": 13, "cofre": -13, "povo": 6}, "rel": {"marta": 1},
+              "outcome": "A cidade se mobiliza. O surto é contido, e o caixa fica apertado."},
+    "right": {"label": "Só orientação", "effects": {"povo": -10, "servicos": -8, "cofre": 2},
+              "outcome": "Sem recursos, o surto cresce. A população cobra a conta."}
+  },
+  {
+    "id": "caixa_vazio", "char": "cleide", "type": "crise", "weight": 10, "req": [{"meter": "cofre", "lt": 30}],
+    "boost": [{"when": [{"meter": "cofre", "lt": 22}], "mult": 3}],
+    "text": "Faltam recursos para fechar a folha do mês e fornecedores ameaçam suspender entregas. Precisamos decidir agora.",
+    "learn": "equilibrio_fiscal",
+    "left":  {"label": "Cortar despesas já", "effects": {"cofre": 12, "servicos": -11, "povo": -6},
+              "outcome": "O caixa volta a respirar, mas os cortes doem em quem usa os serviços."},
+    "right": {"label": "Atrasar fornecedores", "effects": {"cofre": 10, "integridade": -8, "povo": -2}, "flags_set": ["fornecedores_atrasados"],
+              "outcome": "Você ganha fôlego, mas o atraso vira dívida com juros e quem espera pagamento perde a confiança."}
+  },
+  {
+    "id": "cofre_cheio", "char": "lucia", "type": "crise", "weight": 10, "req": [{"meter": "cofre", "gte": 68}],
+    "boost": [{"when": [{"meter": "cofre", "gte": 78}], "mult": 3}],
+    "text": "Lúcia: \"O cofre está cheio e a rua esburacada. Pra que pagar imposto se o dinheiro não volta pra gente?\"",
+    "learn": "equilibrio_fiscal",
+    "left":  {"label": "Investir em obras", "effects": {"servicos": 12, "cofre": -16, "povo": 7},
+              "outcome": "O dinheiro vira asfalto, posto e escola. A população percebe o retorno."},
+    "right": {"label": "Guardar reserva", "effects": {"cofre": 4, "povo": -9, "servicos": -2},
+              "outcome": "Reserva é prudente, mas dinheiro parado não atende ninguém. O descontentamento cresce."}
+  },
+  {
+    "id": "povo_cheque", "char": "tadeu", "type": "crise", "weight": 10, "req": [{"meter": "povo", "gte": 68}],
+    "boost": [{"when": [{"meter": "povo", "gte": 76}], "mult": 3}],
+    "text": "Com 90% de aprovação, a Câmara sugere dispensar a audiência pública das contas: \"ninguém vai reclamar\".",
+    "learn": "controle_social",
+    "left":  {"label": "Dispensar a audiência", "effects": {"cofre": 3, "integridade": -14, "povo": 3},
+              "outcome": "Mais rápido, menos trabalho. Mas as contas passam sem que ninguém confira."},
+    "right": {"label": "Fazer a audiência", "effects": {"integridade": 10, "povo": -5, "cofre": -2},
+              "outcome": "A audiência vira rotina. Dá trabalho, mas a cidade acompanha as contas."}
+  },
+  {
+    "id": "buro_excesso", "char": "tadeu", "type": "crise", "weight": 10, "req": [{"meter": "integridade", "gte": 68}],
+    "boost": [{"when": [{"meter": "integridade", "gte": 76}], "mult": 3}],
+    "text": "O rigor virou fila: três assinaturas até para comprar lápis. Compras importantes levam meses para sair.",
+    "learn": "controladoria",
+    "left":  {"label": "Simplificar processos", "effects": {"integridade": -11, "servicos": 9, "povo": 4},
+              "outcome": "Compras ficam mais rápidas. É preciso manter o controle essencial sem travar o serviço."},
+    "right": {"label": "Manter o rigor", "effects": {"integridade": 4, "servicos": -9, "povo": -3},
+              "outcome": "Tudo conferido, nada entregue a tempo. Controle demais também prejudica."}
+  },
+  {
+    "id": "alerta_comprovante", "char": "bianca", "type": "crise", "weight": 10, "req": [{"meter": "integridade", "lte": 34}],
+    "boost": [{"when": [{"meter": "integridade", "lte": 26}], "mult": 3}],
+    "text": "A Controladoria achou R$ 120 mil pagos sem comprovante: nenhuma nota, nenhum recibo, nenhum responsável.",
+    "learn": "controladoria",
+    "left":  {"label": "Abrir apuração", "effects": {"integridade": 14, "povo": -3, "cofre": 4},
+              "outcome": "A apuração encontra falhas e parte do dinheiro volta. Dói, mas a prefeitura se protege."},
+    "right": {"label": "Arquivar o caso", "effects": {"integridade": -8, "povo": 3}, "flags_set": ["arquivou_caso"],
+              "outcome": "Sem escândalo hoje. Mas o caso fica registrado e pode voltar na hora errada."}
+  },
+
+  {
+    "id": "loa_1", "char": "cleide", "type": "politica", "weight": 12, "req": [{"month": true, "gte": 8}, {"month": true, "lte": 32}],
+    "text": "Hora de enviar o orçamento do próximo ano à Câmara. A receita prevista é menor do que todas as secretarias pedem.",
+    "learn": "orcamento",
+    "left":  {"label": "Cortar igual para todos", "effects": {"cofre": 9, "servicos": -8, "povo": -3},
+              "outcome": "Ninguém ganha tudo, mas ninguém fica de fora. Algumas áreas urgentes sofrem."},
+    "right": {"label": "Priorizar saúde e escola", "effects": {"servicos": 7, "cofre": -3, "povo": -4},
+              "outcome": "Saúde e escola ficam protegidas. As demais secretarias reclamam."}
+  },
+  {
+    "id": "loa_2", "char": "cleide", "type": "evento", "weight": 10, "req": [{"month": true, "gte": 26}],
+    "text": "A arrecadação do ano ficou abaixo do previsto. Se a meta de receita não vier, é preciso segurar gastos para fechar as contas.",
+    "learn": "lrf",
+    "left":  {"label": "Segurar gastos agora", "effects": {"cofre": 10, "servicos": -9, "povo": -4},
+              "outcome": "As contas fecham, mas obras e serviços desaceleram."},
+    "right": {"label": "Esperar a recuperação", "effects": {"cofre": -8, "povo": 3, "integridade": -4},
+              "outcome": "Você mantém o ritmo apostando que a receita volta. Se não voltar, a conta chega no próximo ano."}
+  },
+
+  {
+    "id": "heranca_operacao", "char": "jornal", "type": "consequencia", "weight": 40, "max_month": 12, "req": [{"inherit": "operacao"}],
+    "text": "Manchete: \"Mandato anterior termina em operação policial\". Nas ruas, todos se perguntam se {nome} será diferente.",
+    "learn": "controladoria",
+    "left":  {"label": "Pedir auditoria externa", "effects": {"integridade": 12, "cofre": -6, "povo": 3}, "flags_set": ["auditoria_inicial"],
+              "outcome": "A auditoria independente mostra as falhas e devolve parte da confiança."},
+    "right": {"label": "Focar no trabalho", "effects": {"povo": 4, "integridade": -3},
+              "outcome": "Você começa a entregar e deixa o passado para trás. A desconfiança permanece."}
+  },
+  {
+    "id": "heranca_cofre", "char": "cleide", "type": "consequencia", "weight": 40, "max_month": 12, "req": [{"inherit": "cofre_baixo"}],
+    "text": "As dívidas do mandato anterior ainda pesam: fornecedores cobram e a prefeitura está sem crédito na praça.",
+    "learn": "equilibrio_fiscal",
+    "left":  {"label": "Renegociar e parcelar", "effects": {"cofre": -6, "povo": 3, "integridade": 5},
+              "outcome": "Parcelar alivia o caixa agora e restaura a credibilidade."},
+    "right": {"label": "Pagar o que for possível", "effects": {"cofre": -12, "servicos": -4, "povo": 4},
+              "outcome": "A dívida diminui rápido, mas serviços sofrem."}
+  },
+  {
+    "id": "heranca_povo", "char": "lucia", "type": "consequencia", "weight": 40, "max_month": 12, "req": [{"inherit": "povo_baixo"}],
+    "text": "Lúcia: \"O povo ainda lembra do descaso. Quer ver obra, não promessa.\"",
+    "learn": "orcamento_participativo",
+    "left":  {"label": "Mutirão nos bairros", "effects": {"povo": 10, "servicos": 5, "cofre": -8},
+              "outcome": "Obras pequenas nos bairros mostram que a prefeitura voltou a ouvir."},
+    "right": {"label": "Audiências públicas", "effects": {"povo": 7, "integridade": 8, "servicos": -2},
+              "outcome": "As pessoas falam, a prefeitura escuta. Ainda falta mostrar resultados."}
+  },
+  {
+    "id": "dados_abertos", "char": "jonas", "type": "evento", "weight": 9, "req": [{"selo": "portal"}],
+    "text": "Estudantes criaram um aplicativo com os dados do portal da prefeitura e querem apoio para um hackathon cívico.",
+    "learn": "portal",
+    "left":  {"label": "Apoiar o hackathon", "effects": {"povo": 9, "integridade": 7, "cofre": -5}, "rel": {"jonas": 1},
+              "outcome": "Jovens transformam dados em ferramentas de fiscalização. A cidade percebe que sabe mais do que imaginava."},
+    "right": {"label": "Só agradecer", "effects": {"povo": 2, "integridade": 2},
+              "outcome": "Um gesto simpático. O app segue de pé sem sua ajuda."}
+  },
+
+  {
+    "id": "agenda_leve", "char": "tadeu", "type": "evento", "weight": 2, "fallback": true, "repeat": true, "cooldown": 6,
+    "text": "Dia tranquilo na agenda. Visitar bairros ou despachar com a equipe e adiantar documentos?",
+    "left":  {"label": "Visitar bairros", "effects": {"povo": 4, "cofre": -2},
+              "outcome": "Conversas na rua rendem boas ideias e alguns pedidos."},
+    "right": {"label": "Despachar com a equipe", "effects": {"servicos": 3, "povo": -2},
+              "outcome": "Papéis em dia. Pouco movimento na rua."}
+  },
+  {
+    "id": "fechamento_mes", "char": "cleide", "type": "evento", "weight": 2, "fallback": true, "repeat": true, "cooldown": 6,
+    "text": "Fechamento do mês. Podemos conferir os relatórios com calma ou cortar os gastos pequenos primeiro.",
+    "left":  {"label": "Conferir relatórios", "effects": {"integridade": 4, "cofre": -1},
+              "outcome": "Erros pequenos aparecem e são corrigidos."},
+    "right": {"label": "Cortar gastos pequenos", "effects": {"cofre": 3, "servicos": -2},
+              "outcome": "O cafezinho some, a economia é modesta."}
+  }
+]

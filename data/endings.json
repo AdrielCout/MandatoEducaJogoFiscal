@@ -1,0 +1,118 @@
+[
+  {
+    "id": "povo_baixo", "kind": "fatal", "meter": "povo", "side": "low", "tone": "bad",
+    "title": "Perda de confiança",
+    "cause": "O Povo chegou a zero",
+    "text": "A cidade deixou de acreditar em {nome}. Ninguém mais colabora, paga em dia ou aparece nas audiências. Um grande protesto na praça pede a saída da prefeitura e a Câmara abre o processo de cassação.",
+    "concept": "Quando o cidadão não enxerga o retorno do que paga, a relação entre sociedade e governo se rompe. Arrecadar sem entregar corrói a confiança.",
+    "learn": ["funcao_social"],
+    "discuss": ["Que decisões deixaram o povo sem ver retorno dos impostos?", "Confiança se reconstrói como? Dá para cobrar tributo de quem não confia?"]
+  },
+  {
+    "id": "povo_alto", "kind": "fatal", "meter": "povo", "side": "high", "tone": "bad",
+    "title": "Cheque em branco",
+    "cause": "O Povo chegou a 100",
+    "text": "Com aprovação quase total, ninguém conferia nada: nem a Câmara, nem a imprensa, nem a população. Quando as contas foram abertas, o Tribunal de Contas encontrou gastos sem justificativa. A simpatia virou escudo para o erro.",
+    "concept": "Controle social não é torcida. Confiança sem fiscalização vira cheque em branco, e um governo muito popular ainda precisa prestar contas.",
+    "learn": ["controle_social"],
+    "discuss": ["Por que o excesso de popularidade pode ser perigoso?", "O que o cidadão faz quando concorda com o governo, mas quer conferir as contas?"]
+  },
+  {
+    "id": "servicos_baixo", "kind": "fatal", "meter": "servicos", "side": "low", "tone": "bad",
+    "title": "Cidade parada",
+    "cause": "Os Serviços chegaram a zero",
+    "text": "Postos sem médico, escolas sem merenda, lixo na rua. Os serviços da cidade pararam e a população tomou a prefeitura. O mandato terminou antes de começar a entregar.",
+    "concept": "Os tributos existem para virar serviços. Quando saúde, escola e ruas falham, o ciclo da função social se quebra.",
+    "learn": ["funcao_social", "minimos_constitucionais"],
+    "discuss": ["Quais serviços você deixou cair primeiro? Por quê?", "O que são os mínimos de saúde e educação e por que existem?"]
+  },
+  {
+    "id": "servicos_alto", "kind": "fatal", "meter": "servicos", "side": "high", "tone": "bad",
+    "title": "Promessas que não cabem no orçamento",
+    "cause": "Os Serviços chegaram a 100",
+    "text": "A cidade ganhou serviços demais para uma receita de menos. Manter tudo funcionando custava mais do que a arrecadação, e as contas do mês deixaram de fechar. A prefeitura precisou suspender serviços em massa.",
+    "concept": "Despesa permanente exige receita permanente. Criar serviço sem prever como pagar é uma das armadilhas que a Lei de Responsabilidade Fiscal quer evitar.",
+    "learn": ["lrf", "despesa_obrigatoria"],
+    "discuss": ["Onde passa a linha entre investir e prometer demais?", "Por que um reajuste ou um serviço novo dura mais do que o mandato?"]
+  },
+  {
+    "id": "cofre_baixo", "kind": "fatal", "meter": "cofre", "side": "low", "tone": "bad",
+    "title": "Calote",
+    "cause": "O Cofre chegou a zero",
+    "text": "O dinheiro acabou. Servidores sem salário, fornecedores sem pagamento, obras paradas. A prefeitura declarou calote e {nome} deixou o cargo em meio à crise.",
+    "concept": "Gastar mais do que arrecada gera dívida e paralisa o município. Responsabilidade fiscal protege justamente quem mais depende dos serviços públicos.",
+    "learn": ["equilibrio_fiscal", "lrf"],
+    "discuss": ["Que gastos pesaram mais no caixa?", "Quais receitas você poderia ter fortalecido? A que custo político?"]
+  },
+  {
+    "id": "cofre_alto", "kind": "fatal", "meter": "cofre", "side": "high", "tone": "bad",
+    "title": "Cofre cheio, cidade parada",
+    "cause": "O Cofre chegou a 100",
+    "text": "O caixa estava cheio e as ruas, esburacadas. A população cansou de pagar imposto sem ver nada acontecer. O Tribunal de Contas apontou recursos parados e a Câmara exigiu explicações. O mandato acabou em protesto.",
+    "concept": "Arrecadar não é o fim: o objetivo é entregar. Dinheiro parado não atende ninguém e faz o cidadão questionar para que paga imposto.",
+    "learn": ["funcao_social", "equilibrio_fiscal"],
+    "discuss": ["Por que guardar demais também é um problema?", "Reserva financeira e dinheiro parado: onde está a diferença?"]
+  },
+  {
+    "id": "integridade_baixo", "kind": "fatal", "meter": "integridade", "side": "low", "tone": "bad",
+    "title": "Escândalo",
+    "cause": "A Transparência chegou a zero",
+    "text": "Sem controle e sem contas abertas, os desvios se acumularam. A imprensa revelou pagamentos sem justificativa e a Justiça afastou {nome}. A prefeitura ficou conhecida pelo escândalo.",
+    "concept": "Transparência e controle são a proteção do dinheiro público. Sem eles, o desvio encontra espaço e quem paga a conta é a população.",
+    "learn": ["controladoria", "portal"],
+    "discuss": ["Que decisões esconderam gastos da população?", "Quem fiscaliza o prefeito? Que papel cabe ao cidadão?"]
+  },
+  {
+    "id": "integridade_alto", "kind": "fatal", "meter": "integridade", "side": "high", "tone": "bad",
+    "title": "Paralisia por excesso de controle",
+    "cause": "A Transparência chegou a 100",
+    "text": "Tanta burocracia e tantas assinaturas que a prefeitura parou. Obra, compra e contratação levavam meses. A população perdeu a paciência com um governo honesto, mas incapaz de entregar.",
+    "concept": "Controle é necessário, mas precisa ser proporcional. Excesso de burocracia também prejudica o serviço público, sem ser sinônimo de integridade.",
+    "learn": ["controladoria"],
+    "discuss": ["Quando o controle ajuda e quando atrapalha?", "Como combinar transparência com eficiência?"]
+  },
+  {
+    "id": "operacao", "kind": "event", "tone": "bad",
+    "title": "Operação Contas Abertas",
+    "cause": "Corrupção descoberta",
+    "text": "Mensagens, contratos e depoimentos mostraram o favorecimento. A Justiça afastou {nome} do cargo em uma operação do Ministério Público. A ponte rachou, mas o rombo foi muito maior.",
+    "concept": "Corrupção não é segredo que dura. Ela sai caro: o dinheiro desviado faz falta em hospitais, escolas e obras, e o custo recai sobre todos.",
+    "perm": ["herdou_operacao"],
+    "learn": ["corrupcao", "licitacao"],
+    "discuss": ["Em que momento a proposta parecia boa? O que ela escondia?", "Qual é o papel da licitação em evitar isso?"]
+  },
+  {
+    "id": "mandato_sob_suspeita", "kind": "victory", "tone": "mid",
+    "title": "Mandato sob suspeita",
+    "cause": "48 meses completos, com ressalvas",
+    "when": [{"any": [[{"flag": "propina"}], [{"flag": "favor_ivo"}], [{"flag": "arquivou_caso"}]]}],
+    "text": "{nome} chegou ao fim do mandato, mas deixou o cargo com contas questionadas e processos em andamento. O mandato completo terminou com um asterisco: a cidade nunca esqueceu o que aconteceu.",
+    "concept": "Terminar o mandato não é o mesmo que ter governado bem. Decisões que fogem da lei deixam marcas que aparecem na prestação de contas.",
+    "learn": ["corrupcao", "controladoria"],
+    "discuss": ["O que muda entre terminar o mandato e governar bem?", "O que a população pode fazer quando suspeita das contas?"]
+  },
+  {
+    "id": "mandato_exemplar", "kind": "victory", "tone": "good",
+    "title": "Prestação de contas aprovada",
+    "cause": "48 meses completos, tudo em equilíbrio",
+    "when": [
+      {"meter": "povo", "gte": 30}, {"meter": "povo", "lte": 75},
+      {"meter": "servicos", "gte": 30}, {"meter": "servicos", "lte": 75},
+      {"meter": "cofre", "gte": 30}, {"meter": "cofre", "lte": 75},
+      {"meter": "integridade", "gte": 30}, {"meter": "integridade", "lte": 75}
+    ],
+    "text": "{nome} entregou o mandato com serviços funcionando, caixa saudável, contas abertas e população participando. A prestação de contas foi aprovada sem ressalvas. Novaluz mostrou que é possível equilibrar as quatro forças.",
+    "concept": "Governar bem é arrecadar com justiça, aplicar com planejamento e prestar contas. Nenhuma das quatro forças venceu sozinha: o equilíbrio é o resultado.",
+    "learn": ["funcao_social", "equilibrio_fiscal"],
+    "discuss": ["Quais decisões mais ajudaram o equilíbrio?", "Se você fosse o mediador, que decisão usaria para abrir o debate?"]
+  },
+  {
+    "id": "mandato_equilibrado", "kind": "victory", "tone": "good",
+    "title": "Mandato concluído",
+    "cause": "48 meses completos",
+    "text": "{nome} completou os 48 meses. Nem tudo saiu como planejado, e algumas áreas ficaram para o próximo mandato, mas a cidade segue de pé e as contas foram aprovadas. É um mandato honesto e imperfeito.",
+    "concept": "Governar é escolher entre necessidades que competem por recursos limitados. Não existe orçamento que atenda a tudo, e prestar contas é parte da escolha.",
+    "learn": ["orcamento", "custo_oportunidade"],
+    "discuss": ["Que prioridades você deixou para depois? Valeu a pena?", "Quem perdeu mais com suas escolhas?"]
+  }
+]
