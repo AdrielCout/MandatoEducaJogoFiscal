@@ -73,8 +73,7 @@ class MenuScene(Scene):
         ]
 
     def start(self):
-        run = Run(self.app.content, self.app.save, random.Random())
-        self.app.go(GameScene(self.app, run))
+        self.app.go(HowToScene(self.app))
 
     def glossary(self):
         self.app.go(GlossaryScene(self.app))
@@ -118,6 +117,72 @@ class MenuScene(Scene):
             b.draw(surf, self.app.mouse)
 
 
+# ============================================================================ instrução
+class HowToScene(Scene):
+    """Tela exibida antes de cada mandato iniciado pelo menu: explica as bolinhas e as cores."""
+
+    def __init__(self, app):
+        super().__init__(app)
+        cx = T.W // 2
+        self.buttons = [Button((cx - 170, 618, 340, 60), "Entendi, governar", self.begin,
+                               key="Enter", accent=T.SUN, size=22)]
+
+    def begin(self):
+        run = Run(self.app.content, self.app.save, random.Random())
+        self.app.go(GameScene(self.app, run))
+
+    def key(self, k):
+        if k in (pygame.K_RETURN, pygame.K_KP_ENTER, pygame.K_SPACE):
+            self.begin()
+        elif k == pygame.K_ESCAPE:
+            self.app.go(MenuScene(self.app))
+
+    def draw(self, surf):
+        cx = T.W // 2
+        draw.text(surf, "Como ler uma decisão", 40, T.SUN, (cx, 70), "serif", "center")
+        panel = pygame.Rect(120, 116, T.W - 240, 480)
+        draw.panel(surf, panel, T.PAPER, radius=20, shadow=True)
+        x, w = panel.x + 40, panel.w - 80
+        y = panel.y + 28
+        y = draw.paragraph(surf, "Cada opção de uma carta mostra quais forças da cidade ela mexe. "
+                           "O número de bolinhas mostra a intensidade da mudança:",
+                           20, T.INK, (x, y, w, 0), gap=6) + 14
+
+        cores = self.app.content.config["meters"]
+        for n, texto in ((1, "mexe pouco (até 6 pontos)"),
+                         (2, "mexe de forma média (de 7 a 14 pontos)"),
+                         (3, "mexe muito (mais de 14 pontos)")):
+            draw.text(surf, "●" * n, 26, T.INK_SOFT, (x + 10, y), "bold")
+            draw.text(surf, texto, 19, T.INK, (x + 120, y + 4))
+            y += 40
+        y += 10
+
+        draw.text(surf, "A cor é a da força que muda:", 20, T.INK, (x, y), "bold")
+        y += 34
+        chip_x = x
+        for k in ("cofre", "servicos", "povo", "integridade"):
+            if k not in cores:
+                continue
+            nome = cores[k]["name"]
+            cor = T.METER_COLOR[k]
+            txt = f"{nome} ●●"
+            cw = draw.font(19, "bold").size(txt)[0] + 26
+            chip = pygame.Rect(chip_x, y, cw, 36)
+            draw.panel(surf, chip, T.PANEL, radius=10)
+            draw.text(surf, nome + " ", 19, T.TEXT, (chip.x + 12, chip.centery), "bold", "midleft")
+            nw = draw.font(19, "bold").size(nome + " ")[0]
+            draw.text(surf, "●●", 19, cor, (chip.x + 12 + nw, chip.centery), "bold", "midleft")
+            chip_x += cw + 12
+        y += 56
+
+        y = draw.paragraph(surf, "As bolinhas não dizem se a força sobe ou desce. Essa parte é com você: "
+                           "leia a carta, pense no que cada força representa e escolha. Depois da decisão, "
+                           "o painel mostra o resultado exato.", 20, T.INK, (x, y, w, 0), gap=6)
+        draw.text(surf, "Para voltar a esta explicação, use o menu.", 16, T.INK_SOFT, (x, y + 10))
+        for b in self.buttons:
+            b.draw(surf, self.app.mouse)
+
+
 # ============================================================================ partida
 class GameScene(Scene):
     def __init__(self, app, run: Run):
@@ -144,7 +209,14 @@ class GameScene(Scene):
     def _choice(self, side: str, x: int) -> Button:
         opt = self.card[side]
         hints = self.run.hints(self.card, side)
-        sub = "   ".join(f"{self.mname(k)} {dots(v)}" for k, v in hints.items()) or "sem efeito visível"
+        sub = []
+        for k, v in hints.items():
+            if sub:
+                sub.append(("   ", T.MUTED))
+            sub.append((f"{self.mname(k)} ", T.TEXT))
+            sub.append((dots(v), T.METER_COLOR.get(k, T.TEXT)))
+        if not sub:
+            sub = [("sem efeito visível", T.MUTED)]
         return Button((x, 622, 420, 66), opt["label"], lambda s=side: self.decide(s),
                       key="←" if side == "left" else "→", size=22, sub=sub)
 

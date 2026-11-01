@@ -53,7 +53,15 @@ class Button:
             size -= 1
         if self.sub:
             draw.text(surf, lines[0], size, col, (r.centerx, r.centery - 9), "bold", "center")
-            draw.text(surf, self.sub, 14, T.MUTED, (r.centerx, r.centery + 15), "regular", "center")
+            if isinstance(self.sub, list):          # segmentos (texto, cor): bolinhas na cor do medidor
+                f = draw.font(14)
+                parts = [(f.render(t, True, c), c) for t, c in self.sub]
+                x = r.centerx - sum(img.get_width() for img, _ in parts) // 2
+                for img, _ in parts:
+                    surf.blit(img, (x, r.centery + 7))
+                    x += img.get_width()
+            else:
+                draw.text(surf, self.sub, 14, T.MUTED, (r.centerx, r.centery + 15), "regular", "center")
         else:
             lh = draw.font(size, "bold").get_linesize()
             y0 = r.centery - (len(lines) * lh) // 2 + lh // 2

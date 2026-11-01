@@ -16,7 +16,7 @@ import pygame  # noqa: E402
 
 from educajogo.core.save import Save  # noqa: E402
 from educajogo.ui.app import App  # noqa: E402
-from educajogo.ui.scenes import EndScene, GameScene, GlossaryScene, HistoryScene, MenuScene  # noqa: E402
+from educajogo.ui.scenes import EndScene, GameScene, GlossaryScene, HistoryScene, HowToScene, MenuScene  # noqa: E402
 
 
 def click(pos):
@@ -32,8 +32,17 @@ class InterfaceTests(unittest.TestCase):
         self.assertIsInstance(self.app.scene, MenuScene)
         self.app.tick(0.05)
 
-    def test_botao_comecar_abre_partida(self):
+    def start_game(self):
+        """Clica em 'Começar mandato' e depois na tela de instrução."""
         self.app.scene.start()
+        self.assertIsInstance(self.app.scene, HowToScene)
+        self.app.scene.begin()
+
+    def test_botao_comecar_abre_instrucao_e_depois_partida(self):
+        self.app.scene.start()
+        self.assertIsInstance(self.app.scene, HowToScene)
+        self.app.tick(0.05)
+        self.app.scene.begin()
         self.assertIsInstance(self.app.scene, GameScene)
         self.app.debug = True
         self.app.tick(0.05)                    # desenha com depuração ligada
@@ -41,7 +50,7 @@ class InterfaceTests(unittest.TestCase):
 
     def test_partida_completa_so_pela_interface(self):
         rng = random.Random(4)
-        self.app.scene.start()
+        self.start_game()
         steps = 0
         while not isinstance(self.app.scene, EndScene):
             g = self.app.scene
@@ -55,7 +64,7 @@ class InterfaceTests(unittest.TestCase):
         self.app.tick(0.05)
 
     def test_clique_duplo_conta_uma_vez(self):
-        self.app.scene.start()
+        self.start_game()
         g = self.app.scene
         g.decide("left")
         turno = g.run.turn
@@ -64,7 +73,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(g.run.turn, turno)
 
     def test_arrastar_a_carta_decide(self):
-        self.app.scene.start()
+        self.start_game()
         g = self.app.scene
         cx, cy = g.card_rect().center
         self.app.handle(pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(cx, cy)))
@@ -74,7 +83,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertEqual(g.result.side, "left")
 
     def test_arrastar_pouco_nao_decide(self):
-        self.app.scene.start()
+        self.start_game()
         g = self.app.scene
         cx, cy = g.card_rect().center
         self.app.handle(pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(cx, cy)))
@@ -82,7 +91,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertIsNone(g.result)
 
     def test_teclas_decidem(self):
-        self.app.scene.start()
+        self.start_game()
         g = self.app.scene
         g.key(pygame.K_RIGHT)
         self.assertEqual(g.result.side, "right")
@@ -106,7 +115,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertNotEqual(self.app.save.mediator_mode, before)
 
     def test_fim_do_mandato_grava_historico(self):
-        self.app.scene.start()
+        self.start_game()
         rng = random.Random(9)
         while not isinstance(self.app.scene, EndScene):
             self.app.scene.decide(rng.choice(("left", "right")))
