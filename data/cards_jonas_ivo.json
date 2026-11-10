@@ -1,0 +1,80 @@
+[
+  {
+    "id": "jonas_1", "char": "jonas", "type": "pedido", "story": "O Portal do Jonas", "step": 1, "weight": 14, "req": [{"month": true, "gte": 3}],
+    "text": "Fiz um pedido pela Lei de Acesso à Informação: quanto a prefeitura gasta com combustível? O prazo é de 20 dias.",
+    "left":  {"label": "Responder e publicar", "effects": {"integridade": 12, "povo": 4, "cofre": -2}, "flags_set": ["lai_respondido"], "rel": {"jonas": 1},
+              "schedule": [{"card": "jonas_2", "after": 4}], "learn": "lai",
+              "outcome": "Você responde no prazo e publica os dados. Jonas faz um vídeo elogiando a abertura."},
+    "right": {"label": "Deixar parado", "effects": {"integridade": -10, "povo": -4}, "rel": {"jonas": -1},
+              "schedule": [{"card": "jonas_2n", "after": 3}], "learn": "lai",
+              "outcome": "O prazo vence. Jonas posta: \"a prefeitura não responde\"."}
+  },
+  {
+    "id": "jonas_2", "char": "jonas", "type": "politica", "story": "O Portal do Jonas", "step": 2, "weight": 0,
+    "text": "E se tudo ficasse num portal, aberto a qualquer um? Sistema e treinamento custam, mas acaba o pedido caso a caso.",
+    "left":  {"label": "Criar o portal completo", "effects": {"integridade": 14, "cofre": -8}, "flags_set": ["portal_publicado"], "learn": "portal",
+              "schedule": [{"card": "jonas_3", "after": 6}],
+              "outcome": "Receitas, despesas e contratos ficam à vista de todos, atualizados com frequência."},
+    "right": {"label": "Planilha mensal em PDF", "effects": {"integridade": 5, "cofre": -2}, "learn": "portal",
+              "schedule": [{"card": "jonas_4", "after": 6}],
+              "outcome": "Cumpre o básico. Ninguém consegue cruzar os dados, e o PDF vira cemitério de informação."}
+  },
+  {
+    "id": "jonas_2n", "char": "jonas", "type": "consequencia", "story": "O Portal do Jonas", "step": 2, "weight": 0,
+    "text": "Jonas levou o caso à imprensa: \"Prefeitura esconde gastos\". A Câmara cobra explicações e a população quer saber.",
+    "left":  {"label": "Responder tudo", "effects": {"integridade": 10, "povo": -2, "cofre": -3}, "flags_set": ["lai_respondido"],
+              "schedule": [{"card": "jonas_2", "after": 4}], "learn": "lai",
+              "outcome": "Atrasado, mas você publica os dados. A crise esfria e a conversa sobre o portal volta."},
+    "right": {"label": "Atacar o Jonas", "effects": {"povo": -9, "integridade": -9}, "learn": "controle_social",
+              "outcome": "Chamar quem pergunta de \"militante\" não responde nada. A cidade percebe e a imprensa também."}
+  },
+  {
+    "id": "jonas_3", "char": "jonas", "type": "especial", "story": "O Portal do Jonas", "step": 3, "weight": 0,
+    "text": "No portal, um pagamento chama atenção: R$ 80 mil em \"kits escolares\" que nenhuma escola recebeu.",
+    "left":  {"label": "Investigar e punir", "effects": {"integridade": 11, "povo": 6, "cofre": 5, "servicos": -4},
+              "schedule": [{"card": "jonas_4", "after": 4}], "learn": "controle_social",
+              "outcome": "A apuração acha o erro, devolve o dinheiro e demite o responsável. A secretaria fica semanas travada, mas o portal mostra que funciona."},
+    "right": {"label": "\"Foi erro de digitação\"", "effects": {"integridade": -10, "povo": -6},
+              "schedule": [{"card": "jonas_4", "after": 4}], "learn": "controle_social",
+              "outcome": "A explicação não convence. Jonas encontra mais três pagamentos parecidos."}
+  },
+  {
+    "id": "jonas_4", "char": "lucia", "type": "politica", "story": "O Portal do Jonas", "step": 4, "weight": 0,
+    "text": "Audiência do orçamento. Lúcia propõe que os moradores votem em parte das obras do ano.",
+    "left":  {"label": "Abrir 10% para votação", "effects": {"povo": 12, "integridade": 6, "servicos": 4, "cofre": -3}, "flags_set": ["orcamento_participativo"], "learn": "orcamento_participativo",
+              "outcome": "O povo vota e decide: iluminação, creche e uma quadra. Quem participa passa a entender os limites do caixa."},
+    "right": {"label": "Ouvir, mas decidir", "effects": {"povo": 2, "integridade": -3, "cofre": 2}, "learn": "orcamento_participativo",
+              "outcome": "Menos confusão, menos participação. A audiência vira ritual."}
+  },
+
+  {
+    "id": "ivo_1", "char": "ivo", "type": "politica", "story": "O Hotel Vista Mar", "step": 1, "weight": 14, "req": [{"month": true, "gte": 6}],
+    "text": "Quero construir um hotel novo e peço cinco anos sem IPTU. Prometo 300 empregos. A cidade só tem a ganhar!",
+    "left":  {"label": "Conceder a isenção", "effects": {"povo": 10, "cofre": -7}, "flags_set": ["isencao_hotel"], "rel": {"ivo": 1},
+              "schedule": [{"card": "ivo_2", "after": 8}], "learn": "renuncia_fiscal",
+              "outcome": "Empregos à vista e um imposto a menos por cinco anos. Aprovada em lei, com estimativa de impacto."},
+    "right": {"label": "Recusar o benefício", "effects": {"povo": -6, "cofre": 2}, "rel": {"ivo": -1},
+              "schedule": [{"card": "ivo_2", "after": 8}], "learn": "renuncia_fiscal",
+              "outcome": "A regra é igual para todos. Seu Ivo reclama, mas o hotel pode sair mesmo assim."}
+  },
+  {
+    "id": "ivo_2", "char": "bianca", "type": "especial", "story": "O Hotel Vista Mar", "step": 2, "weight": 0,
+    "text": "A Fazenda cruzou os dados: o Hotel Vista Mar declara metade do faturamento que as reservas indicam. Ivo: \"É só planejamento tributário!\"",
+    "left":  {"label": "Autuar e cobrar", "effects": {"cofre": 14, "integridade": 8, "povo": -3}, "flags_set": ["autuou_ivo"], "rel": {"ivo": -2},
+              "schedule": [{"card": "ivo_3", "after": 4}], "learn": "sonegacao",
+              "outcome": "A diferença é cobrada com multa. Esconder faturamento não é planejamento: é sonegação."},
+    "right": {"label": "Fechar acordo por fora", "effects": {"cofre": 3, "integridade": -14, "povo": 2}, "flags_set": ["favor_ivo"],
+              "schedule": [{"card": "operacao_1", "after": 10}], "learn": "sonegacao",
+              "outcome": "O problema some do papel, mas não da memória. Um favor feito hoje cobra juros depois."}
+  },
+  {
+    "id": "ivo_3", "char": "ivo", "type": "consequencia", "story": "O Hotel Vista Mar", "step": 3, "weight": 0,
+    "text": "Seu Ivo ameaça demitir 100 funcionários: \"A culpa é da prefeitura que me persegue!\"",
+    "left":  {"label": "Manter e parcelar", "effects": {"cofre": -2, "integridade": 4, "povo": -4},
+              "learn": "anistia_parcelamento",
+              "outcome": "Você mantém a cobrança e oferece parcelamento legal. Quem está certo se mantém firme."},
+    "right": {"label": "Perdoar a multa", "effects": {"cofre": -8, "povo": 6, "integridade": -6},
+              "learn": "anistia_parcelamento",
+              "outcome": "Ele cancela as demissões. Mas quem sonegou paga menos do que quem pagou certo."}
+  }
+]

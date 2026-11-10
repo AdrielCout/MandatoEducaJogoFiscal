@@ -1,0 +1,147 @@
+{
+  "tributo": {
+    "title": "Tributo",
+    "topic": "Função social dos tributos",
+    "text": "Tributo é um pagamento obrigatório em dinheiro, previsto em lei, que não é multa. Existem impostos, taxas e contribuições. É com ele que o poder público financia saúde, escola, ruas e segurança."
+  },
+  "tributos_tipos": {
+    "title": "Imposto, taxa e contribuição de melhoria",
+    "topic": "Função social dos tributos",
+    "text": "Imposto não tem contrapartida direta (ex.: IPTU, ISS). Taxa é cobrada por um serviço específico ou pelo poder de polícia. Contribuição de melhoria é cobrada de quem teve o imóvel valorizado por uma obra pública."
+  },
+  "taxa": {
+    "title": "Taxa",
+    "topic": "Função social dos tributos",
+    "text": "A taxa remunera um serviço público específico e divisível, como a coleta domiciliar de lixo. Quem não pode ser medido ou separado (como a iluminação de rua) não pode ser cobrado como taxa."
+  },
+  "iptu": {
+    "title": "IPTU e cadastro de imóveis",
+    "topic": "Orçamento público e prioridades",
+    "text": "O IPTU é o imposto municipal sobre imóveis urbanos. Depende do cadastro e da planta de valores. Se o cadastro está defasado, imóveis valiosos podem pagar menos do que deveriam e a cobrança fica injusta."
+  },
+  "divida_ativa": {
+    "title": "Dívida ativa",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Dívida ativa é o crédito público não pago no prazo e inscrito para cobrança (administrativa ou judicial), inclusive com protesto em cartório. Cobrar quem deve é justo com quem paga em dia."
+  },
+  "anistia_parcelamento": {
+    "title": "Anistia e parcelamento",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Parcelar mantém o dever de pagar. Anistia perdoa a dívida ou a multa e só pode vir de lei. Perdoar com frequência estimula o atraso e é injusto com quem sempre pagou em dia."
+  },
+  "funcao_social": {
+    "title": "Função social dos tributos",
+    "topic": "Função social dos tributos",
+    "text": "Arrecadar e aplicar formam um ciclo: o cidadão paga, o governo entrega serviços e o cidadão cobra. Se a entrega falha, a confiança em pagar também cai."
+  },
+  "transferencias": {
+    "title": "Repasses: FPM e cota do ICMS",
+    "topic": "Orçamento público e prioridades",
+    "text": "Muitos municípios dependem de repasses: o FPM (parte de impostos federais) e 25% do ICMS arrecadado no estado, em parte proporcional ao movimento econômico registrado em notas fiscais."
+  },
+  "minimos_constitucionais": {
+    "title": "Mínimos de saúde e educação",
+    "topic": "Orçamento público e prioridades",
+    "text": "A lei obriga o município a aplicar pelo menos 25% da receita de impostos em educação e pelo menos 15% em saúde. Não é favor do prefeito: é piso."
+  },
+  "lrf": {
+    "title": "Lei de Responsabilidade Fiscal",
+    "topic": "Orçamento público e prioridades",
+    "text": "A LRF (Lei Complementar 101/2000) exige planejamento e equilíbrio: não se cria despesa permanente sem prever receita, há limite para gasto com pessoal e é preciso cortar quando a arrecadação não chega."
+  },
+  "despesa_obrigatoria": {
+    "title": "Despesas obrigatórias e discricionárias",
+    "topic": "Orçamento público e prioridades",
+    "text": "Folha, dívidas e mínimos legais são despesas obrigatórias. O espaço de escolha de quem governa está nas despesas discricionárias, que são menores do que parecem."
+  },
+  "custo_oportunidade": {
+    "title": "Custo de oportunidade",
+    "topic": "Orçamento público e prioridades",
+    "text": "Todo real gasto numa coisa deixa de ser gasto em outra. O show de aniversário e as ambulâncias disputam o mesmo caixa. Escolher é abrir mão."
+  },
+  "publicidade_oficial": {
+    "title": "Publicidade oficial",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "A publicidade do governo deve informar serviços ao público. A Constituição proíbe que ela traga nomes, símbolos ou imagens que promovam autoridades (art. 37, §1º)."
+  },
+  "nota_fiscal": {
+    "title": "Nota fiscal",
+    "topic": "Consumo e documentos fiscais",
+    "text": "A nota registra a venda e permite recolher o imposto. Sem ela, o tributo some e parte do ICMS que volta ao município também. Quem pede nota ajuda a cidade e garante direitos de consumidor, como troca e garantia."
+  },
+  "formalizacao": {
+    "title": "Formalização e MEI",
+    "topic": "Consumo e documentos fiscais",
+    "text": "O MEI (Microempreendedor Individual) é um modo simples de formalizar pequenos negócios: pagamento mensal fixo, CNPJ, nota fiscal e proteção previdenciária. Formalizar abre acesso a crédito e a direitos."
+  },
+  "tributo_no_preco": {
+    "title": "O imposto está no preço",
+    "topic": "Consumo e documentos fiscais",
+    "text": "Todo mundo paga tributo, inclusive estudante: ele vem embutido no preço do que se compra. Pela Lei 12.741/2012, a nota deve informar o valor aproximado dos tributos."
+  },
+  "licitacao": {
+    "title": "Licitação",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Licitação é o processo público de compra e contratação, com igualdade de condições entre concorrentes (Lei 14.133/2021). Evita favorecimento. O menor preço nem sempre é o melhor negócio."
+  },
+  "contrato_aditivo": {
+    "title": "Aditivos e contratos públicos",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Contratos públicos podem ser alterados por aditivos, mas só dentro de limites legais (em obras, acréscimos de até 25% do valor inicial). Proposta muito baixa pode esconder aditivos futuros."
+  },
+  "corrupcao": {
+    "title": "Corrupção",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Aceitar vantagem para favorecer alguém em contrato público é corrupção. O dinheiro desviado deixaria de virar hospital, escola ou ponte: o custo é pago por todos."
+  },
+  "controle_social": {
+    "title": "Controle social",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Controle social é o cidadão acompanhar e cobrar o uso do dinheiro público: conselhos, audiências, portais, imprensa, denúncias. Só funciona quando há informação e vigilância, não só simpatia."
+  },
+  "lai": {
+    "title": "Lei de Acesso à Informação",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "A Lei 12.527/2011 garante que qualquer pessoa peça dados públicos. O órgão deve responder em até 20 dias, prorrogáveis por mais 10, com justificativa."
+  },
+  "portal": {
+    "title": "Portal da Transparência",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "Portais divulgam receitas e despesas públicas. A Lei Complementar 131/2009 exige divulgação em tempo real. Dado aberto permite que jornalistas, estudantes e cidadãos fiscalizem."
+  },
+  "sonegacao": {
+    "title": "Sonegação, elisão e evasão",
+    "topic": "Sonegação e suas consequências",
+    "text": "Sonegar é esconder ou fraudar informação para pagar menos tributo: crime contra a ordem tributária (Lei 8.137/1990). Elisão é planejamento dentro da lei. O custo da sonegação recai sobre quem paga certo."
+  },
+  "renuncia_fiscal": {
+    "title": "Renúncia de receita",
+    "topic": "Sonegação e suas consequências",
+    "text": "Isenções e incentivos reduzem a arrecadação para atrair empresas ou ajudar grupos. Podem gerar empregos, mas têm custo: pela LRF, precisam de estimativa de impacto e compensação."
+  },
+  "orcamento": {
+    "title": "PPA, LDO e LOA",
+    "topic": "Orçamento público e prioridades",
+    "text": "O orçamento se organiza em três leis: PPA (plano de 4 anos), LDO (diretrizes do ano) e LOA (o orçamento do ano). Prever receita e fixar despesa é a base do planejamento público."
+  },
+  "orcamento_participativo": {
+    "title": "Orçamento participativo",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "No orçamento participativo, a população debate e vota parte dos investimentos. Aproxima o cidadão das escolhas e também dos limites do orçamento."
+  },
+  "controladoria": {
+    "title": "Controle interno e externo",
+    "topic": "Cidadania fiscal e controle social",
+    "text": "O controle interno (controladoria) e o externo (Câmara, Tribunal de Contas, Ministério Público) conferem se o dinheiro foi gasto conforme a lei. Burocracia em excesso atrapalha; falta de controle abre espaço para desvios."
+  },
+  "convenios": {
+    "title": "Convênios e emendas",
+    "topic": "Orçamento público e prioridades",
+    "text": "Convênios e emendas trazem dinheiro de outro nível de governo para uma obra específica, em geral com contrapartida do município. Ajudam, mas criam compromisso e custo de manutenção."
+  },
+  "equilibrio_fiscal": {
+    "title": "Equilíbrio das contas",
+    "topic": "Educação financeira e cidadania",
+    "text": "Gastar mais do que arrecada gera dívida e atrasos. Guardar dinheiro sem aplicar também tem custo para quem espera serviços. Equilíbrio é arrecadar, planejar e entregar."
+  }
+}

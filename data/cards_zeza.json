@@ -1,0 +1,60 @@
+[
+  {
+    "id": "zeza_1", "char": "zeza", "type": "pedido", "story": "A Nota de Dona Zeza", "step": 1, "weight": 14, "req": [{"month": true, "gte": 2}],
+    "text": "Fui multada por vender sem nota. Mas se eu der nota, tenho que cobrar mais caro. Quem vai comprar, {t}?",
+    "learn": "nota_fiscal",
+    "left":  {"label": "Manter a multa", "effects": {"cofre": 6, "povo": -8, "integridade": 3}, "rel": {"zeza": -1},
+              "schedule": [{"card": "zeza_2a", "after": 4}],
+              "outcome": "A multa entra no caixa. Dona Zeza fecha a porta do mercadinho por duas semanas."},
+    "right": {"label": "Ajudar a formalizar", "effects": {"povo": 7, "cofre": -4}, "rel": {"zeza": 1},
+              "schedule": [{"card": "zeza_2b", "after": 4}], "learn": "formalizacao",
+              "outcome": "Um atendente da prefeitura leva Dona Zeza ao MEI. Ela volta com CNPJ e um bloco de notas novo."}
+  },
+  {
+    "id": "zeza_2a", "char": "zeza", "type": "consequencia", "story": "A Nota de Dona Zeza", "step": 2, "weight": 0,
+    "text": "Paguei a multa, mas agora seis comércios do bairro vendem \"por fora\". Ninguém quer dar nota e a concorrência ficou desleal.",
+    "left":  {"label": "Blitz de fiscalização", "effects": {"cofre": 8, "povo": -10, "integridade": 4}, "flags_set": ["informalidade_alta"], "rel": {"zeza": -1},
+              "schedule": [{"card": "zeza_3", "after": 4}], "learn": "nota_fiscal",
+              "outcome": "Fiscais autuam três lojas, mas o medo faz outras sumirem do cadastro. A informalidade vira escondida."},
+    "right": {"label": "Programa de formalização", "effects": {"cofre": -7, "povo": 6}, "rel": {"zeza": 1},
+              "schedule": [{"card": "zeza_3", "after": 4}], "learn": "formalizacao",
+              "outcome": "Cursos e atendimento mostram o caminho do MEI. Alguns comerciantes aderem."}
+  },
+  {
+    "id": "zeza_2b", "char": "zeza", "type": "consequencia", "story": "A Nota de Dona Zeza", "step": 2, "weight": 0,
+    "text": "Virei MEI e já emito nota. Mas perdi cliente pro vizinho que vende \"sem nota, mais barato\". Isso é justo?",
+    "left":  {"label": "Fiscalizar quem não emite", "effects": {"cofre": 5, "povo": -7, "integridade": 3},
+              "schedule": [{"card": "zeza_3", "after": 4}], "learn": "nota_fiscal",
+              "outcome": "A fiscalização equilibra a concorrência. Há reclamação de quem se acostumou ao desconto sem nota."},
+    "right": {"label": "Apoiar o MEI com curso", "effects": {"cofre": -5, "povo": 5}, "rel": {"zeza": 1},
+              "schedule": [{"card": "zeza_3", "after": 4}], "learn": "formalizacao",
+              "outcome": "Dona Zeza aprende a competir sem fugir do imposto. Vários vizinhos também se inscrevem."}
+  },
+  {
+    "id": "zeza_3", "char": "jonas", "type": "evento", "story": "A Nota de Dona Zeza", "step": 3, "weight": 0,
+    "text": "Fiz uma enquete: 7 em cada 10 jovens nunca pedem nota. \"Pra quê?\" Dá pra sortear prêmios para quem pedir e cadastrar o CPF.",
+    "left":  {"label": "Criar o sorteio", "effects": {"cofre": -9, "povo": 9, "integridade": 2}, "flags_set": ["campanha_nota"], "learn": "nota_fiscal",
+              "schedule": [{"card": "zeza_4a", "after": 6, "if": [{"flag": "campanha_nota"}, {"no_flag": "informalidade_alta"}]},
+                           {"card": "zeza_4b", "after": 6, "if": [{"any": [[{"flag": "informalidade_alta"}]]}]}],
+              "outcome": "A fila pelo CPF na nota cresce. O resultado só aparece daqui a alguns meses."},
+    "right": {"label": "Só uma campanha", "effects": {"cofre": -2, "povo": 2},
+              "schedule": [{"card": "zeza_4b", "after": 6}], "learn": "tributo_no_preco",
+              "outcome": "Cartazes e posts. Sem incentivo, o hábito muda pouco."}
+  },
+  {
+    "id": "zeza_4a", "char": "zeza", "type": "consequencia", "story": "A Nota de Dona Zeza", "step": 4, "weight": 0,
+    "text": "Contratei minha primeira funcionária! Até a padaria dá nota agora. Mais venda registrada, mais ICMS e ISS chegando. Mantemos o sorteio?",
+    "left":  {"label": "Manter o sorteio", "effects": {"cofre": -3, "povo": 4}, "flags_set": ["cultura_nota"], "rel": {"zeza": 1}, "learn": "transferencias",
+              "outcome": "O hábito pega e a receita sobe mês a mês. Parte do ICMS que volta ao município depende justamente das notas."},
+    "right": {"label": "Encerrar o sorteio", "effects": {"cofre": 6, "povo": -3},
+              "outcome": "Você economiza o prêmio, mas parte do hábito se perde e as notas diminuem."}
+  },
+  {
+    "id": "zeza_4b", "char": "zeza", "type": "consequencia", "story": "A Nota de Dona Zeza", "step": 4, "weight": 0,
+    "text": "A informalidade cresceu: três mercados sumiram do cadastro e o preço \"sem nota\" virou normal. Quem emite nota perde espaço.",
+    "left":  {"label": "Campanha tardia", "effects": {"cofre": -8, "povo": 3}, "flags_set": ["cultura_nota"], "flags_clear": ["informalidade_alta"], "learn": "nota_fiscal",
+              "outcome": "Custa mais caro do que no começo, mas o hábito começa a mudar. Dona Zeza volta a vender com nota."},
+    "right": {"label": "Aceitar a realidade", "effects": {"cofre": -4, "povo": -3}, "flags_set": ["informalidade_alta"],
+              "outcome": "Menos imposto recolhido e menos serviços. A informalidade vira rotina."}
+  }
+]

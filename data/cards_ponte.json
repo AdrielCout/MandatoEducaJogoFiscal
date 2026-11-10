@@ -1,0 +1,89 @@
+[
+  {
+    "id": "vitor_1", "char": "vitor", "type": "politica", "story": "A Ponte do Alto", "step": 1, "weight": 14, "req": [{"month": true, "gte": 2}],
+    "text": "A ponte do Alto está interditada. Vitor: \"Faço em 60 dias, sem licitação, preço de amigo. E uma ajudinha de 10% pra sua campanha.\"",
+    "left":  {"label": "Aceitar o acordo", "effects": {"povo": 10, "servicos": 10, "cofre": -10, "integridade": -22}, "flags_set": ["propina"], "rel": {"vitor": 1},
+              "counters": {"corrupcao": 1}, "learn": "corrupcao",
+              "schedule": [{"card": "vitor_2c", "after": 6}, {"card": "operacao_1", "after": 12, "if": [{"flag": "propina"}]}],
+              "outcome": "A obra sai rápido e a cidade comemora. Mas o contrato é secreto e o preço, estranho."},
+    "right": {"label": "Abrir licitação", "effects": {"povo": -6, "cofre": -4, "integridade": 8}, "flags_set": ["licitacao"], "rel": {"vitor": -1},
+              "learn": "licitacao", "schedule": [{"card": "licit_2", "after": 3}],
+              "outcome": "Vitor sai furioso. A obra demora, mas a regra é igual para todos."}
+  },
+  {
+    "id": "licit_2", "char": "cleide", "type": "politica", "story": "A Ponte do Alto", "step": 2, "weight": 0,
+    "text": "Chegaram três propostas. A mais barata é 25% menor, de uma empresa sem histórico. A outra custa mais, mas tem obras entregues.",
+    "left":  {"label": "Menor preço", "effects": {"cofre": -4, "povo": -2}, "flags_set": ["menor_preco"],
+              "schedule": [{"card": "ponte_3", "after": 4}], "learn": "licitacao",
+              "outcome": "Boa economia no papel. Falta saber se a empresa aguenta a obra."},
+    "right": {"label": "Melhor técnica e preço", "effects": {"cofre": -12, "servicos": 4},
+              "schedule": [{"card": "ponte_3", "after": 4}], "learn": "licitacao",
+              "outcome": "Custa mais, mas a empresa tem histórico. O risco de atrasos é menor."}
+  },
+  {
+    "id": "ponte_3", "char": "lucia", "type": "pedido", "story": "A Ponte do Alto", "step": 3, "weight": 0,
+    "text": "A obra começou. Os moradores querem ver o contrato e os valores. \"É dinheiro nosso, não é?\", pergunta Lúcia.",
+    "left":  {"label": "Publicar tudo no portal", "effects": {"integridade": 11, "povo": 6, "cofre": -3}, "flags_set": ["contrato_publicado"], "learn": "portal",
+              "schedule": [{"card": "ponte_4a", "after": 4, "if": [{"flag": "menor_preco"}]}, {"card": "ponte_4b", "after": 4, "if": [{"no_flag": "menor_preco"}]}],
+              "outcome": "Contrato, valores e cronograma ficam abertos. Os moradores passam a fiscalizar a obra por conta própria."},
+    "right": {"label": "Divulgar só no fim", "effects": {"integridade": -4, "povo": -3},
+              "schedule": [{"card": "ponte_4a", "after": 4, "if": [{"flag": "menor_preco"}]}, {"card": "ponte_4b", "after": 4, "if": [{"no_flag": "menor_preco"}]}],
+              "learn": "controle_social",
+              "outcome": "Sem informação durante a obra, boatos correm. Mais fácil governar, mais difícil convencer."}
+  },
+  {
+    "id": "ponte_4a", "char": "cleide", "type": "consequencia", "story": "A Ponte do Alto", "step": 4, "weight": 0,
+    "text": "A empresa mais barata atrasou três meses e pede um aditivo. O contrato permite ajustes, mas só até um limite legal.",
+    "left":  {"label": "Aceitar o aditivo", "effects": {"cofre": -12, "servicos": 8, "povo": 3},
+              "schedule": [{"card": "ponte_5", "after": 4}], "learn": "contrato_aditivo",
+              "outcome": "A obra continua. O \"barato\" ficou perto do preço das outras propostas."},
+    "right": {"label": "Rescindir e relicitar", "effects": {"cofre": -6, "servicos": -6, "povo": -6, "integridade": 6},
+              "schedule": [{"card": "ponte_5", "after": 6}], "learn": "licitacao",
+              "outcome": "Você perde tempo, mas evita pagar além do razoável. A nova empresa é mais séria."}
+  },
+  {
+    "id": "ponte_4b", "char": "vitor", "type": "consequencia", "story": "A Ponte do Alto", "step": 4, "weight": 0,
+    "text": "Vitor, que perdeu a licitação, entra com recurso e ameaça a imprensa: \"Favoreceram a concorrente!\"",
+    "left":  {"label": "Responder com documentos", "effects": {"integridade": 8, "povo": 3, "cofre": -2},
+              "schedule": [{"card": "ponte_5", "after": 4}], "learn": "licitacao",
+              "outcome": "Edital, atas e propostas estão abertos. O recurso perde força e a obra segue."},
+    "right": {"label": "Ignorar e seguir", "effects": {"integridade": -7, "povo": -4, "servicos": 4},
+              "schedule": [{"card": "ponte_5", "after": 4}],
+              "outcome": "A obra segue, mas a dúvida fica no ar. Falta de resposta parece culpa."}
+  },
+  {
+    "id": "ponte_5", "char": "lucia", "type": "evento", "story": "A Ponte do Alto", "step": 5, "weight": 0,
+    "text": "A ponte do Alto está pronta! Os moradores querem inaugurar com festa. Você pode também apresentar quanto custou.",
+    "left":  {"label": "Festa com discurso", "effects": {"povo": 11, "cofre": -6, "integridade": -3},
+              "outcome": "Foguetes, banda e discurso. A ponte é linda e a conta, pouco clara."},
+    "right": {"label": "Prestar contas na inauguração", "effects": {"integridade": 9, "povo": 5, "cofre": -1}, "learn": "controle_social",
+              "outcome": "Placa com o valor da obra, empresa e prazo. É assim que uma obra vira prova de confiança."}
+  },
+  {
+    "id": "vitor_2c", "char": "lucia", "type": "consequencia", "story": "A Ponte do Alto", "step": 2, "weight": 0,
+    "text": "A ponte do Alto já tem rachaduras! O engenheiro diz que o concreto foi \"economizado\" para sobrar margem no contrato.",
+    "left":  {"label": "Interditar e refazer", "effects": {"cofre": -15, "servicos": -6, "povo": 4, "integridade": 4},
+              "learn": "corrupcao",
+              "outcome": "Segurança em primeiro lugar. Refazer a obra consome dinheiro público que já tinha sido pago."},
+    "right": {"label": "Abafar o caso", "effects": {"povo": -8, "integridade": -10, "servicos": -4},
+              "learn": "corrupcao",
+              "outcome": "Um tapume esconde as rachaduras. Mas há fotos, e as fotos já circulam."}
+  },
+  {
+    "id": "operacao_1", "char": "bianca", "type": "especial", "story": "A Ponte do Alto", "step": 3, "weight": 0,
+    "text": "A Controladoria e o Ministério Público cruzaram contratos e pagamentos. Há indícios de favorecimento e sobrepreço. Pedem seu depoimento.",
+    "left":  {"label": "Colaborar e devolver", "effects": {"cofre": 10, "integridade": 10, "povo": -14}, "flags_set": ["colaborou"],
+              "schedule": [{"card": "operacao_2", "after": 2}], "learn": "corrupcao",
+              "outcome": "Você devolve o valor e entrega documentos. O preço político é alto, mas o mandato segue."},
+    "right": {"label": "Negar tudo", "effects": {"integridade": -20}, "end": "operacao", "learn": "corrupcao",
+              "outcome": "Mensagens, contratos e testemunhas desmentem você. A Justiça afasta o prefeito do cargo."}
+  },
+  {
+    "id": "operacao_2", "char": "bianca", "type": "consequencia", "story": "A Ponte do Alto", "step": 4, "weight": 0,
+    "text": "O Ministério Público propõe um acordo: devolução do valor, abertura total do contrato e prestação de contas pública.",
+    "left":  {"label": "Pedir desculpas ao povo", "effects": {"povo": -4, "integridade": 8}, "learn": "controladoria",
+              "outcome": "Duro, mas honesto. A confiança volta devagar, com contas abertas."},
+    "right": {"label": "Culpar o empreiteiro", "effects": {"povo": 3, "integridade": -8}, "learn": "controladoria",
+              "outcome": "A população não gosta de ser tratada como boba. A resposta só reforça a desconfiança."}
+  }
+]

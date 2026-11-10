@@ -1,0 +1,2 @@
+# Dependências de execução. O resto é biblioteca padrão do Python (3.10 ou mais novo).
+pygame-ce==2.5.8

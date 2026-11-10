@@ -1,0 +1,26 @@
+# Ambiente virtual e dependências locais
+.venv/
+venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Saves e arquivos temporários do jogo
+mandato_save.json
+*.tmp
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Vídeo de contingência (fica fora do git; o link vai no README)
+*.mp4
+*.mov
+*.avi
+
+# Exportações do GDD (versão final entregue pelo Drive/Classroom)
+*.pdf

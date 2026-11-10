@@ -1,0 +1,8 @@
+[
+  {"id": "portal", "title": "Portal no ar", "desc": "Publique o Portal da Transparência completo.", "when": [{"flag": "portal_publicado"}]},
+  {"id": "mao_limpa", "title": "Mãos limpas", "desc": "Chegue a 24 meses sem aceitar vantagem nem esconder irregularidade.", "when": [{"month": true, "gte": 24}, {"no_flag": "propina"}, {"no_flag": "favor_ivo"}, {"no_flag": "arquivou_caso"}]},
+  {"id": "cultura_nota", "title": "Cidade que pede nota", "desc": "Faça a cultura da nota fiscal pegar em Novaluz.", "when": [{"flag": "cultura_nota"}]},
+  {"id": "ouvir_cidade", "title": "Orçamento ouvindo a cidade", "desc": "Abra parte do orçamento para votação popular.", "when": [{"flag": "orcamento_participativo"}]},
+  {"id": "cobranca_justa", "title": "Cobrança mais justa", "desc": "Atualize o cadastro de imóveis e cobre a dívida ativa.", "when": [{"flag": "divida_ativa"}, {"flag": "cadastro_atualizado"}]},
+  {"id": "mandato_completo", "title": "Mandato completo", "desc": "Cumpra os 48 meses.", "when": [{"ending_kind": "victory"}]}
+]
